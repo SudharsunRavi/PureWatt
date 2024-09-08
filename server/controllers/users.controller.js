@@ -10,8 +10,8 @@ const registration = async (req, res) => {
             "INSERT INTO users (name, email, phonenumber, city, pincode, role, createdat, password) VALUES($1, $2, $3, $4, $5, $6, $7, $8) RETURNING *",
             [name, email, phonenumber, city, pincode, role, createdat, hashedPassword]
         );
-        const result = user.rows[0];
-        return res.status(200).json({status:"true", result});
+        const {password:pass, ...userInfo} = user.rows[0];
+        return res.status(200).json({status:"true", userInfo});
     } catch (error) {
         console.log(error);
         return res.status(500).json({ message: error.message });
