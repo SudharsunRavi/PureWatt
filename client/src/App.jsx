@@ -1,9 +1,41 @@
-const App=()=> {
-  return (
-    <>
-      <h1 className='text-sm text-red-800'>Workingggggg</h1>
-    </>
-  )
-}
+import { createBrowserRouter, Outlet, RouterProvider } from 'react-router-dom';
 
-export default App
+import Home  from "./Pages/Home";
+import Login  from "./Pages/Login";
+import Register from "./Pages/Register";
+
+const AppLayout = () => {
+  return (
+      <div>
+        <Outlet />
+      </div>
+  );
+};
+
+const App = () => {
+
+  const appRouter = createBrowserRouter([
+    {
+      path: '/',
+      element: <AppLayout />,
+      children: [
+          {
+            path: '/',
+            element: <Home />
+          },
+          {
+            path: '/login',
+            element: <Login />
+          },
+          {
+            path: '/register',
+            element: <Register />
+          },
+      ]
+    }
+  ]);
+
+  return <RouterProvider router={appRouter} />;
+};
+
+export default App;
