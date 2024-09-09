@@ -31,10 +31,9 @@ const Navbar = () => {
             const res = await fetch(`${import.meta.env.VITE_BASE_URL}/users/logout`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                credentials: "include",
             });
-    
-            if (res.status === 200) {
+            const data = await res.json();
+            if (data.status == 'true') {
                 toast.success('Logged out successfully', { duration: 3000 });
                 dispatch(logout(null));
                 navigate('/');

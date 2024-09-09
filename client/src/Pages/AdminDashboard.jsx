@@ -10,7 +10,6 @@ const AdminDashboard = () => {
   const [windPlants, setWindPlants] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  // Fetch function for different tables
   const fetchData = async () => {
     try {
       // Fetch Fundings Received
@@ -44,7 +43,6 @@ const AdminDashboard = () => {
     fetchData();
   }, []);
 
-  // Columns for each table
   const fundingColumns = [
     { title: 'Plant ID', dataIndex: 'plantid', key: 'plantid' },
     { title: 'Revenue streams', dataIndex: 'revenuestreams', key: 'revenuestreams' },

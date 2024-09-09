@@ -178,4 +178,14 @@ const getUsers = async (req, res) => {
     }
 }
 
-module.exports = {registration, login, updateUser, deleteUser, getUsers};
+const logout = async (req, res) => {
+    try {
+        res.clearCookie('token');
+        res.json({ status: 'true', message: 'Logged out' });
+    } catch (error) {
+        res.status(500).json({ status: 'false', message: error.message });
+        console.log(error);
+    }
+}
+
+module.exports = {registration, login, updateUser, deleteUser, getUsers, logout};

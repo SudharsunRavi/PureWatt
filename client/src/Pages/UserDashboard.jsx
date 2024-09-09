@@ -7,7 +7,7 @@ const { Title } = Typography;
 const { TabPane } = Tabs;
 
 const UserDashboard = () => {
-    const userid = useSelector(state => state.user.currentUser.userid); // Get userid from Redux
+    const userid = useSelector(state => state.user.currentUser.userid);
     const [funding, setFunding] = useState([]);
     const [powerPlants, setPowerPlants] = useState([]);
     const [proposals, setProposals] = useState([]);
