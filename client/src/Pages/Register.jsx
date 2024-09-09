@@ -71,14 +71,14 @@ const Register = () => {
         </div>
         <form
           onSubmit={handleSubmit}
-          className=" w-11/12 md:w-4/12 absolute p-12 bg-black bg-opacity-80 rounded-sm my-[35px] mx-auto right-0 left-0 text-white"
+          className="w-11/12 md:w-4/12 absolute p-4 bg-black bg-opacity-80 rounded-sm mx-auto right-0 left-0 text-white"
         >
           <h1 className="m-2 font-bold text-3xl py-4">{"Register"}</h1>
 
             <input 
               type="text"
               placeholder="Name"
-              className="p-4 m-2 w-full rounded-md bg-transparent border border-white" 
+              className="p-4 m-2 w-11/12 rounded-md bg-transparent border border-white" 
               required
               autoComplete="off"
               id="name"
@@ -87,7 +87,7 @@ const Register = () => {
             <input 
               type="text" 
               placeholder="Email Address" 
-              className="p-4 m-2 w-full rounded-md bg-transparent border border-white"
+              className="p-4 m-2 w-11/12 rounded-md bg-transparent border border-white"
               required
               autoComplete="off"
               id="email"
@@ -96,7 +96,7 @@ const Register = () => {
             <input 
               type="text" 
               placeholder="Phone Number" 
-              className="p-4 m-2 w-full rounded-md bg-transparent border border-white"
+              className="p-4 m-2 w-11/12 rounded-md bg-transparent border border-white"
               required
               autoComplete="off"
               id="phonenumber"
@@ -105,7 +105,7 @@ const Register = () => {
             <input 
               type="text" 
               placeholder="City" 
-              className="p-4 m-2 w-full rounded-md bg-transparent border border-white"
+              className="p-4 m-2 w-11/12 rounded-md bg-transparent border border-white"
               autoComplete="off"
               id="city"
               onChange={handleChange}
@@ -113,7 +113,7 @@ const Register = () => {
             <input 
               type="text" 
               placeholder="Pincode" 
-              className="p-4 m-2 w-full rounded-md bg-transparent border border-white"
+              className="p-4 m-2 w-11/12 rounded-md bg-transparent border border-white"
               autoComplete="off"
               id="pincode"
               onChange={handleChange}
@@ -121,7 +121,7 @@ const Register = () => {
             <input 
               type="password"
               placeholder="Password"
-              className="p-4 m-2 w-full rounded-md bg-transparent border border-white"
+              className="p-4 m-2 w-11/12 rounded-md bg-transparent border border-white"
               autoComplete="off"
               required
               onChange={(e)=>setPasswordValidation(e.target.value)}
@@ -129,14 +129,14 @@ const Register = () => {
             <input 
               type="password"
               placeholder="Confirm Password"
-              className="p-4 m-2 w-full rounded-md bg-transparent border border-white"
+              className="p-4 m-2 w-11/12 rounded-md bg-transparent border border-white"
               autoComplete="off"
               required
               id="password"
               onChange={handleChange}
             />
             <button 
-              className="p-4 mb-5 m-2 rounded-md bg-green-600 w-full" 
+              className="p-4 mb-5 m-2 rounded-md bg-green w-11/12" 
             >
                 {"Register"}
             </button>
