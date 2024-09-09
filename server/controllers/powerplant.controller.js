@@ -17,7 +17,7 @@ const create = async (req, res) => {
 
 const update = async (req, res) => {
     const { powerplantid, name, location, installedcapacitymw, type, startdate, ownedby, plantmanagerid, createdby, modifiedat } = req.body;
-    console.log("Request Body:", req.body);
+    //console.log("Request Body:", req.body);
 
     try {
         const updatedPowerplant = await pool.query(
@@ -32,11 +32,11 @@ const update = async (req, res) => {
         if (updatedPowerplant.rowCount === 0) {
             return res.status(404).json({ status: 'false', message: "Powerplant not found" });
         }
-        console.log("Updated Powerplant:", updatedPowerplant.rows[0]);
+        //console.log("Updated Powerplant:", updatedPowerplant.rows[0]);
 
         return res.status(201).json({ status: 'true', data: updatedPowerplant.rows[0] });
     } catch (error) {
-        console.error(error);
+        console.log(error);
         return res.status(500).json({ status: 'false', message: error.message });
     }
 }
