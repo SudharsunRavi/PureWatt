@@ -54,7 +54,7 @@ const Login = () => {
         </div>
         <form
           onSubmit={handleSubmit}
-          className=" w-11/12 md:w-4/12 absolute p-12 bg-black bg-opacity-80 rounded-sm my-[200px] mx-auto right-0 left-0 text-white"
+          className=" w-11/12 md:w-4/12 absolute p-12 bg-black bg-opacity-80 rounded-sm my-[100px] mx-auto right-0 left-0 text-white"
         >
           <h1 className="m-2 font-bold text-3xl py-4">{"Login"}</h1>
 
@@ -77,7 +77,7 @@ const Login = () => {
               onChange={handleChange}
             />
             <button 
-              className="p-4 mb-5 m-2 rounded-md bg-green-600 w-full" 
+              className="p-4 mb-5 m-2 rounded-md bg-green w-full" 
             >
                 {"Login"}
             </button>
