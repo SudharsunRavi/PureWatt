@@ -17,7 +17,7 @@ const AdminSpace = () => {
 
     return (
         <div>
-            <div className="bg-light_green border-3 border-black md:mr-8 p-4 h-screen w-[300px]  shadow-2xl">
+            <div className="bg-light_green border-3 border-black md:mr-8 p-4 h-screen w-[300px]  shadow-2xl relative z-50">
                 <div className="flex flex-col md:justify-center md:items-center ">
                     <button className="md:text-3xl text-xl text-center font-medium text-dark_green">
                         <Link to="/admindashboard">Admin's Space</Link>

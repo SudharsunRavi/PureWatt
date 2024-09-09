@@ -68,7 +68,7 @@ const Navbar = () => {
     }, []);
 
     return (
-        <header className="sticky top-0 z-50 bg-slate-500">
+        <header className="sticky top-0 z-50 bg-green">
             <div className="flex flex-wrap items-center justify-between max-w-[90%] mx-auto">
                 <div className='flex gap-6'>
                     <RxHamburgerMenu 
@@ -77,16 +77,16 @@ const Navbar = () => {
                     />
                     <Link to={'/'}>
                         <img 
-                            // src="https://firebasestorage.googleapis.com/v0/b/arshabodhini-3a058.appspot.com/o/arshabodhini_logo.png?alt=media&token=d01aabef-e945-4417-9afa-af4a49e83e7f" 
+                            src="https://firebasestorage.googleapis.com/v0/b/purewatt-62253.appspot.com/o/RemoveBG%20Logo.png?alt=media&token=c57a9f44-6ed1-4fa4-84e5-d76d735ebd3c" 
                             alt="logo" 
-                            className='w-32 sm:w-52 h-20 sm:h-24 object-contain cursor-pointer'
+                            className='w-32 -ml-6 sm:w-52 h-20 sm:h-24 object-contain cursor-pointer'
                         />
                     </Link>
                 </div>
                 
                 <ul className='flex gap-6 items-center'>
                     <Link to='/'>
-                        <li className='hidden sm:inline hover:underline sm:text-lg text-beige'>Home</li>
+                        <li className='hidden sm:inline hover:underline sm:text-lg text-white'>Home</li>
                     </Link>
                     
                     <li className='relative' ref={dropdownRef}>
@@ -96,16 +96,20 @@ const Navbar = () => {
                                     <span className='sm:inline mt-[1px] sm:text-lg font-semibold italic'>{currentUser?.name}</span>
                                 </>
                             ) : (
-                                <Link to='/login' className='hover:underline sm:text-lg text-beige'>Login</Link>
+                                <Link to='/login' className='hover:underline sm:text-lg text-white'>Login</Link>
                             )}
                         </div>
                         {currentUser && dropdownOpen && (
                             <div className='absolute right-0 mt-2 w-48 bg-white border border-gray-200 rounded-md shadow-lg z-50'>
                                 <ul className='py-1'>
                                     <li onClick={() => setDropdownOpen(false)}>
+                                        <Link to='/userdashboard' className='block px-4 py-2 text-gray-800 hover:bg-gray-100'>Dashboard</Link>
+                                    </li>
+                                    <li onClick={() => setDropdownOpen(false)}>
                                         <button onClick={handleLogout} className="w-full text-left block px-4 py-2 text-gray-800 hover:bg-gray-100">Logout</button>
                                     </li>
                                 </ul>
+                                
                             </div>
                         )}
                     </li>

@@ -75,10 +75,16 @@ const SolarPlantDetails = () => {
 
     return (
         <div className='flex justify-center mt-10'>
+            <div className="absolute inset-0 bg-black">
+                <img 
+                src={'https://firebasestorage.googleapis.com/v0/b/purewatt-62253.appspot.com/o/purewatt.png?alt=media&token=079def2f-5115-452d-aef2-035a58556eb3'}
+                className="h-screen w-screen object-cover opacity-40"
+                alt = "Background" />   
+            </div>
 
-          <div className="w-11/12 mx-auto text-sm">
-              <div className=" mt-6 flex justify-between items-center mb-4">
-                  <h1 className="text-3xl font-semibold">Solar Power Plant Details</h1>
+          <div className="w-11/12 mx-auto text-sm mt-10">
+              <div className="absolute z-10 flex justify-between items-center mb-4 mt-[-50px]">
+                  <h1 className="text-3xl font-semibold text-white">Solar Power Plant Details</h1>
               </div>
 
               <ConfigProvider

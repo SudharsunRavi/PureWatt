@@ -117,10 +117,16 @@ const EditWindplant = () => {
     return (
         <div>
             <Toaster />
-            <h1 className="m-2 font-bold text-3xl py-4">Update data for wind plant</h1>
+            <div className="absolute inset-0 bg-black">
+            <img 
+              src={'https://firebasestorage.googleapis.com/v0/b/purewatt-62253.appspot.com/o/purewatt.png?alt=media&token=079def2f-5115-452d-aef2-035a58556eb3'}
+              className="h-screen w-screen object-cover opacity-40"
+              alt = "Background" />   
+            </div>
             <div>
-                <form onSubmit={handleSubmit} className="w-11/12 md:w-4/12 absolute p-12 bg-black bg-opacity-80 rounded-sm my-auto mx-auto right-0 left-0 text-white">
-                    <select id="plantid" onChange={handleChange} required className="p-4 m-2 w-full rounded-md bg-transparent border border-white" value={formData.plantid}>
+                <form onSubmit={handleSubmit} className="w-11/12 md:w-4/12 absolute p-8 mt-3 text-center bg-black bg-opacity-80 rounded-sm my-auto mx-auto right-0 left-0 text-white">
+                    <h1 className="m-2 font-bold text-3xl py-4">Update data for wind plant</h1>
+                    <select id="plantid" onChange={handleChange} required className="p-4 m-2 w-full rounded-md bg-black border border-white text-white" value={formData.plantid}>
                         <option value="">Select Powerplant</option>
                         {powerplant.map((plant) => (
                             <option key={plant.powerplantid} value={plant.powerplantid}>{plant.name}</option>
@@ -133,7 +139,7 @@ const EditWindplant = () => {
                     <input type="text" placeholder="hubheight" id="hubheight"  onChange={handleChange} required autoComplete="off" className="p-4 m-2 w-full rounded-md bg-transparent border border-white" value={formData.hubheight} />
                     <input type="text" placeholder="turbineavailability" id="turbineavailability"  onChange={handleChange} required autoComplete="off" className="p-4 m-2 w-full rounded-md bg-transparent border border-white" value={formData.turbineavailability} />
             
-                    <button type="submit" className="p-4 mb-5 m-2 rounded-md bg-green-600 w-full">Create</button>
+                    <button type="submit" className="p-4 mb-5 m-2 rounded-md bg-dark_green w-full">Create</button>
                 </form>
             </div>
         </div>

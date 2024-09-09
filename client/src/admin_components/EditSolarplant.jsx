@@ -116,24 +116,30 @@ const EditSolarplant = () => {
     return (
         <div>
             <Toaster />
-            <h1 className="m-2 font-bold text-3xl py-4">Add data for solar plant</h1>
+            <div className="absolute inset-0 bg-black">
+            <img 
+              src={'https://firebasestorage.googleapis.com/v0/b/purewatt-62253.appspot.com/o/purewatt.png?alt=media&token=079def2f-5115-452d-aef2-035a58556eb3'}
+              className="h-screen w-screen object-cover opacity-40"
+              alt = "Background" />   
+            </div>
             <div>
-                <form onSubmit={handleSubmit} className="w-11/12 md:w-4/12 absolute p-12 bg-black bg-opacity-80 rounded-sm my-auto mx-auto right-0 left-0 text-white">
-                    <select id="plantid" onChange={handleChange} required className="p-4 m-2 w-full rounded-md bg-transparent border border-white">
+                <form onSubmit={handleSubmit} className="w-11/12 md:w-4/12 absolute p-8 mt-3 bg-black bg-opacity-80 rounded-sm my-auto mx-auto right-0 left-0 text-white">
+                    <h1 className="m-2 font-bold text-3xl text-center">Add data for solar plant</h1>
+                    <select id="plantid" onChange={handleChange} required className="p-4 m-2 w-full rounded-md bg-black border border-white text-white">
                         <option value="">Select Powerplant</option>
                         {powerplant.map((plant) => (
                             <option key={plant.plantid} value={formData.plantid}>{plant.name}</option>
                         ))}
                     </select>
-                    <input type="text" placeholder="solarirradiance" id="solarirradiance" onChange={handleChange} required autoComplete="off" className="p-4 m-2 w-full rounded-md bg-transparent border border-white" value={formData.solarirradiance}/>
-                    <input type="text" placeholder="performanceratio" id="performanceratio"  onChange={handleChange} required autoComplete="off" className="p-4 m-2 w-full rounded-md bg-transparent border border-white" value={formData.performanceratio}/>
-                    <input type="text" placeholder="moduleefficiency" id="moduleefficiency" onChange={handleChange} required autoComplete="off" className="p-4 m-2 w-full rounded-md bg-transparent border border-white" value={formData.moduleefficiency}/>
-                    <input type="text" placeholder="inverterefficiency" id="inverterefficiency"  onChange={handleChange} required autoComplete="off" className="p-4 m-2 w-full rounded-md bg-transparent border border-white" value={formData.inverterefficiency}/>
-                    <input type="text" placeholder="cuf" id="cuf"  onChange={handleChange} required autoComplete="off" className="p-4 m-2 w-full rounded-md bg-transparent border border-white" value={formData.cuf}/>
-                    <input type="text" placeholder="degradationrate" id="degradationrate"  onChange={handleChange} required autoComplete="off" className="p-4 m-2 w-full rounded-md bg-transparent border border-white" value={formData.degradationrate}/>
-                    <input type="text" placeholder="gridavailability" id="gridavailability"  onChange={handleChange} required autoComplete="off" className="p-4 m-2 w-full rounded-md bg-transparent border border-white" value={formData.gridavailability}/>
+                    <input type="text" placeholder="solarirradiance" id="solarirradiance" onChange={handleChange} required autoComplete="off" className="p-4 mx-2 w-full rounded-md bg-transparent border border-white" value={formData.solarirradiance}/>
+                    <input type="text" placeholder="performanceratio" id="performanceratio"  onChange={handleChange} required autoComplete="off" className="p-4 mx-2 my-[6px] w-full rounded-md bg-transparent border border-white" value={formData.performanceratio}/>
+                    <input type="text" placeholder="moduleefficiency" id="moduleefficiency" onChange={handleChange} required autoComplete="off" className="p-4 mx-2 my-[6px] w-full rounded-md bg-transparent border border-white" value={formData.moduleefficiency}/>
+                    <input type="text" placeholder="inverterefficiency" id="inverterefficiency"  onChange={handleChange} required autoComplete="off" className="p-4 mx-2 my-[6px] w-full rounded-md bg-transparent border border-white" value={formData.inverterefficiency}/>
+                    <input type="text" placeholder="cuf" id="cuf"  onChange={handleChange} required autoComplete="off" className="p-4 mx-2 my-[6px] w-full rounded-md bg-transparent border border-white" value={formData.cuf}/>
+                    <input type="text" placeholder="degradationrate" id="degradationrate"  onChange={handleChange} required autoComplete="off" className="p-4 mx-2 my-[6px] w-full rounded-md bg-transparent border border-white" value={formData.degradationrate}/>
+                    <input type="text" placeholder="gridavailability" id="gridavailability"  onChange={handleChange} required autoComplete="off" className="p-4 mx-2 my-[6px] w-full rounded-md bg-transparent border border-white" value={formData.gridavailability}/>
                     
-                    <button type="submit" className="p-4 mb-5 m-2 rounded-md bg-green-600 w-full">Create</button>
+                    <button type="submit" className="p-4 mb-5 m-2 rounded-md bg-dark_green w-full">Create</button>
                 </form>
             </div>
         </div>
