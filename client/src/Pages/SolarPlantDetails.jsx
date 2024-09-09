@@ -17,31 +17,13 @@ const SolarPlantDetails = () => {
             console.log(data)
 
             setData(data);
-            setFilteredData(data);
+            setFilteredData(data.data);
         } catch (error) {
             console.error('Error fetching Solar Details:', error);
         }
     };
 
     const columns = [
-        // {
-        //     title: 'Plant Name',
-        //     dataIndex: 'modename',
-        //     key: 'modename',
-        //     ellipsis: true,
-        // },
-        // {
-        //     title: 'Location',
-        //     dataIndex: 'description',
-        //     key: 'description',
-        //     ellipsis: true,
-        // },
-        // {
-        //     title: 'Capacity (MW)',
-        //     dataIndex: 'description',
-        //     key: 'description',
-        //     ellipsis: true,
-        // },
         {
             title: 'Solar Irradiance',
             dataIndex: 'solarirradiance',
@@ -84,31 +66,12 @@ const SolarPlantDetails = () => {
             dataIndex: 'gridavailability',
             key: 'gridavailability',
             ellipsis: true,
-        },
-        // {
-        //     title: 'Edit/Delete',
-        //     key: 'actions',
-        //     width: 110,
-        //     render: (text, record) => (
-        //         <div className="flex items-center gap-8">
-        //             <button className="text-2xl" onClick={() => handleEdit(record)}>
-        //                 <Tooltip title={"Edit"}> <CiEdit /> </Tooltip> 
-        //             </button>
-        //             <button className="text-2xl" onClick={() => showDeleteConfirm(record)}>
-        //                 <Tooltip title={"Delete"}><AiOutlineDelete /></Tooltip>
-        //             </button>
-        //         </div>
-        //     ),
-        // },
+        }
     ];
 
     useEffect(() => {
         fetchSolarDetails();
     }, []);
-
-    const rowClassName = (record, index) => {
-        return 'text-left';
-    };
 
     return (
         <div className='flex justify-center mt-10'>
@@ -117,20 +80,7 @@ const SolarPlantDetails = () => {
               <div className=" mt-6 flex justify-between items-center mb-4">
                   <h1 className="text-3xl font-semibold">Solar Power Plant Details</h1>
               </div>
-
-              <ConfigProvider
-                  theme={{
-                      components: {
-                          Table: {
-                              headerBg: '#3A4D39',
-                              headerColor: '#ffffff',
-                              rowHoverBg: '#739072',
-                          },
-                      },
-                  }}
-              >
-                  <Table dataSource={filteredData} columns={columns} bordered={true} rowClassName={rowClassName} scroll={{ y: 550 }} rowKey="plantid" />
-              </ConfigProvider>
+                <Table dataSource={filteredData} columns={columns} bordered={true} scroll={{ y: 550 }} rowKey="plantid" />
           </div>
         </div>
     );

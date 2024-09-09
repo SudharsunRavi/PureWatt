@@ -47,7 +47,7 @@ const deleteSolar = async (req, res) => {
 
 const getDetails = async (req, res) => {
     try {
-        const solar = await pool.query('SELECT * FROM solar');
+        const solar = await pool.query('SELECT * FROM solarpowerplant');
         return res.status(200).json({ status: 'true', data: solar.rows });
     }
     catch (error) {
