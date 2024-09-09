@@ -16,19 +16,31 @@ const create = async (req, res) => {
 }
 
 const update = async (req, res) => {
-    const {powerplantid, name, location, installedcapacitymw, type, startdate, ownedby, plantmanagerid, createdby, modifiedat} = req.body;
+    const { powerplantid, name, location, installedcapacitymw, type, startdate, ownedby, plantmanagerid, createdby, modifiedat } = req.body;
+    console.log("Request Body:", req.body);
+
     try {
-        const newPowerplant = await pool.query(
-            'UPDATE powerplant SET name = $2, location = $3, installedcapacitymw = $4, type = $5, startdate = $6, ownedby = $7, plantmanagerid = $8, createdby = $9, modifiedat = $10 WHERE powerplantid = $1 RETURNING *',
+        const updatedPowerplant = await pool.query(
+            `UPDATE powerplant 
+             SET name = $2, location = $3, installedcapacitymw = $4, type = $5, startdate = $6, 
+                 ownedby = $7, plantmanagerid = $8, createdby = $9, modifiedat = $10 
+             WHERE powerplantid = $1 
+             RETURNING *`,
             [powerplantid, name, location, installedcapacitymw, type, startdate, ownedby, plantmanagerid, createdby, modifiedat]
         );
-        pool.query('COMMIT');
-        return res.status(201).json({ status: 'true', data: newPowerplant.rows[0] });
+
+        if (updatedPowerplant.rowCount === 0) {
+            return res.status(404).json({ status: 'false', message: "Powerplant not found" });
+        }
+        console.log("Updated Powerplant:", updatedPowerplant.rows[0]);
+
+        return res.status(201).json({ status: 'true', data: updatedPowerplant.rows[0] });
     } catch (error) {
-        console.log(error);
+        console.error(error);
         return res.status(500).json({ status: 'false', message: error.message });
     }
 }
+
 
 const deletePowerplant = async (req, res) => {
     const {powerplantid} = req.body;
