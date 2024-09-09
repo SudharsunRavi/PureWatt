@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { IoMdMenu, IoMdClose } from "react-icons/io";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { useState, useEffect, useRef } from 'react';
-// import AdminSpace from '../admin_components/AdminSpace';
+import AdminSpace from '../admin_components/AdminSpace';
 import { logout } from '../redux/userslice';
 import toast, { Toaster } from 'react-hot-toast';
 
@@ -71,10 +71,10 @@ const Navbar = () => {
         <header className="sticky top-0 z-50 bg-slate-500">
             <div className="flex flex-wrap items-center justify-between max-w-[90%] mx-auto">
                 <div className='flex gap-6'>
-                    {currentUser && (currentUser.role === 'admin' || currentUser.role === 'superadmin') && <RxHamburgerMenu 
+                    <RxHamburgerMenu 
                         onClick={toggleAdminSpaceHandler}
                         className="text-2xl mt-10 cursor-pointer hidden sm:block"
-                    />}
+                    />
                     <Link to={'/'}>
                         <img 
                             // src="https://firebasestorage.googleapis.com/v0/b/arshabodhini-3a058.appspot.com/o/arshabodhini_logo.png?alt=media&token=d01aabef-e945-4417-9afa-af4a49e83e7f" 

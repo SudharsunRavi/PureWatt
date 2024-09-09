@@ -19,70 +19,103 @@ const AdminSpace = () => {
         <div>
             <div className="bg-light_green border-3 border-black md:mr-8 p-4 h-screen w-[300px]  shadow-2xl">
                 <div className="flex flex-col md:justify-center md:items-center ">
-                    <button className="md:text-3xl text-xl text-center font-medium text-arshabodhini_brown">
+                    <button className="md:text-3xl text-xl text-center font-medium text-dark_green">
                         <Link to="/admindashboard">Admin's Space</Link>
                     </button>
 
-                    <div className="border border-arshabodhini_brown text-arshabodhini_brown rounded-lg hover:opacity-95 disabled:opacity-80 w-40 md:w-52 self-center mt-7 text-center">
-                        <div className="bg-arshabodhini_brown h-[50px] mb-3 rounded-t-md md:w-[207px] flex items-center justify-center">
+                    <div className="border border-dark_green text-arshabodhini_brown rounded-lg hover:opacity-95 disabled:opacity-80 w-40 md:w-52 self-center mt-7 text-center">
+                        <div className="bg-dark_green h-[50px] mb-3 rounded-t-md md:w-[207px] flex items-center justify-center">
                             <h1 className="text-xl text-white">Settings</h1>
                         </div>
                         <div className="flex flex-col gap-2 font-normal text-lg  mb-3">
                             <Link
-                                to="/list-user"
-                                className={`text-left ${isCurrentPath('/list-user') ? 'text-white bg-hover_grey' : 'text-arshabodhini_brown hover:bg-arshabodhini_brown hover:text-white'}`}
+                                to="/proposal"
+                                className={`text-left ${isCurrentPath('/proposal') ? 'text-white bg-green' : 'text-white hover:bg-green hover:text-white'}`}
                             >
-                                <button className='px-4' onClick={() => handleSelectChange('/list-user')}>
-                                    User
+                                <button className='px-4' onClick={() => handleSelectChange('/proposal')}>
+                                    Proposal
                                 </button>
                             </Link>
                             <Link
-                                to="/list-topic"
-                                className={`text-left ${isCurrentPath('/list-topic') ? 'text-white bg-hover_grey' : 'text-arshabodhini_brown hover:bg-arshabodhini_brown hover:text-white'}`}
+                                to="/solarplant-details"
+                                className={`text-left ${isCurrentPath('/solarplant-details') ? 'text-white bg-green' : 'text-white hover:bg-green hover:text-white'}`}
                             >
-                                <button className='px-4' onClick={() => handleSelectChange('/list-topic')}>
-                                    Topic
+                                <button className='px-4' onClick={() => handleSelectChange('/solarplant-details')}>
+                                    Solar Plant Details
                                 </button>
                             </Link>
                             <Link
-                                to="/list-class"
-                                className={`text-left ${isCurrentPath('/list-class') ? 'text-white bg-hover_grey' : 'text-arshabodhini_brown hover:bg-arshabodhini_brown hover:text-white'}`}
+                                to="/windplant-details"
+                                className={`text-left ${isCurrentPath('/windplant-details') ? 'text-white bg-green' : 'text-white hover:bg-green hover:text-white'}`}
                             >
-                                <button className='px-4' onClick={() => handleSelectChange('/list-class')}>
-                                    Class
+                                <button className='px-4' onClick={() => handleSelectChange('/windplant-details')}>
+                                    Wind Plant Details
                                 </button>
                             </Link>
                             <Link
-                                to="/list-mode"
-                                className={`text-left ${isCurrentPath('/list-mode') ? 'text-white bg-hover_grey' : 'text-arshabodhini_brown hover:bg-arshabodhini_brown hover:text-white'}`}
+                                to="/fundingreceived"
+                                className={`text-left ${isCurrentPath('/fundingreceived') ? 'text-white bg-green' : 'text-white hover:bg-green hover:text-white'}`}
                             >
-                                <button className='px-4' onClick={() => handleSelectChange('/list-mode')}>
-                                    Mode
+                                <button className='px-4' onClick={() => handleSelectChange('/fundingreceived')}>
+                                    Funding Received
                                 </button>
                             </Link>
                             <Link
-                                to="/admin"
-                                className={`text-left ${isCurrentPath('/admin') ? 'text-white bg-hover_grey' : 'text-arshabodhini_brown hover:bg-arshabodhini_brown hover:text-white'}`}
+                                to="/powerplant-create"
+                                className={`text-left ${isCurrentPath('/powerplant-create') ? 'text-white bg-green' : 'text-white hover:bg-green hover:text-white'}`}
                             >
-                                <button className='px-4' onClick={() => handleSelectChange('/admin')}>
-                                    Report
-                                </button>
-                            </Link>
-                            <Link
-                                to="/list-location"
-                                className={`text-left ${isCurrentPath('/list-location') ? 'text-white bg-hover_grey' : 'text-arshabodhini_brown hover:bg-arshabodhini_brown hover:text-white'}`}
-                            >
-                                <button className='px-4' onClick={() => handleSelectChange('/list-location')}>
-                                    Location
+                                <button className='px-4' onClick={() => handleSelectChange('/powerplant-create')}>
+                                    Create Powerplant
                                 </button>
                             </Link>
 
                             <Link
-                                to="/list-schedule"
-                                className={`text-left ${isCurrentPath('/list-schedule') ? 'text-white bg-hover_grey' : 'text-arshabodhini_brown hover:bg-arshabodhini_brown hover:text-white'}`}
+                                to="/powerplant-edit/:id"
+                                className={`text-left ${isCurrentPath('/powerplant-edit/:id') ? 'text-white bg-green' : 'text-white hover:bg-green hover:text-white'}`}
                             >
-                                <button className='px-4' onClick={() => handleSelectChange('/list-schedule')}>
-                                    Class Schedule
+                                <button className='px-4' onClick={() => handleSelectChange('/powerplant-edit/:id')}>
+                                    Edit Powerplant
+                                </button>
+                            </Link>
+                            
+                            <Link
+                                to="/solarplant"
+                                className={`text-left ${isCurrentPath('/solarplant') ? 'text-white bg-green' : 'text-white hover:bg-green hover:text-white'}`}
+                            >
+                                <button className='px-4' onClick={() => handleSelectChange('/solarplant')}>
+                                    Solar Powerplant
+                                </button>
+                            </Link>
+                            <Link
+                                to="/windplant"
+                                className={`text-left ${isCurrentPath('/windplant') ? 'text-white bg-green' : 'text-white hover:bg-green hover:text-white'}`}
+                            >
+                                <button className='px-4' onClick={() => handleSelectChange('/windplant')}>
+                                    Wind Powerplant
+                                </button>
+                            </Link>
+                            <Link
+                                to="/solarplant-edit/:id"
+                                className={`text-left ${isCurrentPath('/solarplant-edit/:id') ? 'text-white bg-green' : 'text-white hover:bg-green hover:text-white'}`}
+                            >
+                                <button className='px-4' onClick={() => handleSelectChange('/solarplant-edit/:id')}>
+                                    Edit Solar Powerplant
+                                </button>
+                            </Link>
+                            <Link
+                                to="/windplant-edit/:id"
+                                className={`text-left ${isCurrentPath('/windplant-edit/:id') ? 'text-white bg-green' : 'text-white hover:bg-green hover:text-white'}`}
+                            >
+                                <button className='px-4' onClick={() => handleSelectChange('/windplant-edit/:id')}>
+                                    Edit Wind Powerplant
+                                </button>
+                            </Link>
+                            <Link
+                                to="/fundingreceived-edit/:id"
+                                className={`text-left ${isCurrentPath('/fundingreceived-edit/:id') ? 'text-white bg-green' : 'text-white hover:bg-green hover:text-white'}`}
+                            >
+                                <button className='px-4' onClick={() => handleSelectChange('/fundingreceived-edit/:id')}>
+                                    Edit Fundings
                                 </button>
                             </Link>
                         </div>

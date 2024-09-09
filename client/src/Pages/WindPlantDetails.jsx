@@ -13,15 +13,15 @@ const WindPlantDetails = () => {
         try {
             const response = await fetch(`${import.meta.env.VITE_BASE_URL}/wind/getdetails`);
             const data = await response.json();
-
-            console.log(data)
-
-            setData(data);
-            setFilteredData(data.data);
+            
+            const windDataArray = Array.isArray(data.data) ? data.data : [data.data];
+            setData(windDataArray);
+            setFilteredData(windDataArray);
         } catch (error) {
             console.error('Error fetching Wind Details:', error);
+            setFilteredData([]);
         }
-    };
+    };    
 
     const columns = [
         {

@@ -46,7 +46,7 @@ const getDetails = async(req, res) => {
     try {
         const wind = await pool.query('select * from windpowerplant');
         console.log(wind)
-        return res.status(200).json({ status: 'true', data: wind.rows[0] });
+        return res.status(200).json({ status: 'true', data: wind.rows});
     } catch (error) {
         console.log(error);
         return res.status(500).json({ status:"false", message: error.message });
