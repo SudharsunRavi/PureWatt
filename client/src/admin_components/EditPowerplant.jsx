@@ -102,12 +102,18 @@ const EditPowerplant=()=>{
 
     return(
         <div>
-            <h1 className="m-2 font-bold text-3xl py-4">Powerplant</h1>
+            <div className="absolute inset-0 bg-black">
+            <img 
+              src={'https://firebasestorage.googleapis.com/v0/b/purewatt-62253.appspot.com/o/purewatt.png?alt=media&token=079def2f-5115-452d-aef2-035a58556eb3'}
+              className="h-screen w-screen object-cover opacity-40"
+              alt = "Background" />   
+            </div>
             <div>
-                <form onSubmit={handleSubmit} className="w-11/12 md:w-4/12 absolute p-12 bg-black bg-opacity-80 rounded-sm my-auto mx-auto right-0 left-0 text-white">
+                <form onSubmit={handleSubmit} className="w-11/12 md:w-4/12 absolute p-8 mt-12 bg-black bg-opacity-80 rounded-sm my-auto mx-auto right-0 left-0 text-white">
+                    <h1 className="m-2 font-bold text-3xl py-4 text-center">Powerplant</h1>
                     <input type="text" placeholder="Powerplant Name" id="name" onChange={handleChange} required autoComplete="off" className="p-4 m-2 w-full rounded-md bg-transparent border border-white" value={formData.name}/>
                     <input type="text" placeholder="Powerplant Location" id="location" onChange={handleChange} required autoComplete="off" className="p-4 m-2 w-full rounded-md bg-transparent border border-white" value={formData.location}/>
-                    <select id="type" onChange={handleChange} required autoComplete="off" className="p-4 m-2 w-full rounded-md bg-transparent border border-white text-black" value={formData.type}>
+                    <select id="type" onChange={handleChange} required autoComplete="off" className="p-4 m-2 w-full rounded-md bg-black border border-white text-white" value={formData.type}>
                         <option value="solar">Solar</option>
                         <option value="wind">Wind</option>
                         <option value="hydro">Hydro</option>
@@ -117,7 +123,7 @@ const EditPowerplant=()=>{
                     <input type="text" placeholder="Start Date" id="startdate" onChange={handleChange} required autoComplete="off" className="p-4 m-2 w-full rounded-md bg-transparent border border-white" value={formData.startdate}/>
                     <input type="text" placeholder="Owned By" id="ownedby" onChange={handleChange} required autoComplete="off" className="p-4 m-2 w-full rounded-md bg-transparent border border-white" value={formData.ownedby}/>
 
-                    <button type="submit" className="p-4 mb-5 m-2 rounded-md bg-green-600 w-full">Create</button>
+                    <button type="submit" className="p-4 mb-5 m-2 rounded-md bg-dark_green w-full">Create</button>
                 </form>
             </div>
         </div>

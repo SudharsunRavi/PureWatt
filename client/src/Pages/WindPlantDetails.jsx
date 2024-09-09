@@ -9,76 +9,63 @@ const WindPlantDetails = () => {
     const [filteredData, setFilteredData] = useState([]);
     const [selectedRecord, setSelectedRecord] = useState(null);
 
+    const fetchWindDetails = async () => {
+        try {
+            const response = await fetch(`${import.meta.env.VITE_BASE_URL}/wind/getdetails`);
+            const data = await response.json();
+
+            console.log(data)
+
+            setData(data);
+            setFilteredData(data.data);
+        } catch (error) {
+            console.error('Error fetching Wind Details:', error);
+        }
+    };
+
     const columns = [
         {
-            title: 'Plant Name',
-            dataIndex: 'modename',
-            key: 'modename',
-            ellipsis: true,
-        },
-        {
-            title: 'Location',
-            dataIndex: 'description',
-            key: 'description',
-            ellipsis: true,
-        },
-        {
             title: 'Wind Speed',
-            dataIndex: 'description',
-            key: 'description',
+            dataIndex: 'windspeed',
+            key: 'windspeed',
             ellipsis: true,
         },
         {
             title: 'Turbine Efficiency',
-            dataIndex: 'description',
-            key: 'description',
+            dataIndex: 'turbineefficiency',
+            key: 'turbineefficiency',
             ellipsis: true,
         },
         {
             title: 'Capacity Factor',
-            dataIndex: 'description',
-            key: 'description',
+            dataIndex: 'capacityfactor',
+            key: 'capacityfactor',
             ellipsis: true,
         },
         {
             title: 'Turbine Rotor Diameter',
-            dataIndex: 'description',
-            key: 'description',
+            dataIndex: 'turbinerotordiameter',
+            key: 'turbinerotordiameter',
             ellipsis: true,
         },
         {
             title: 'Hub Height',
-            dataIndex: 'description',
-            key: 'description',
+            dataIndex: 'hubheight',
+            key: 'hubheight',
             ellipsis: true,
         },
         {
             title: 'Turbine Availability',
-            dataIndex: 'description',
-            key: 'description',
+            dataIndex: 'turbineavailability',
+            key: 'turbineavailability',
             ellipsis: true,
             width: 80,
         },
-        {
-            title: 'Edit/Delete',
-            key: 'actions',
-            width: 110,
-            render: (text, record) => (
-                <div className="flex items-center gap-8">
-                    <button className="text-2xl" onClick={() => handleEdit(record)}>
-                        <Tooltip title={"Edit"}> <CiEdit /> </Tooltip> 
-                    </button>
-                    <button className="text-2xl" onClick={() => showDeleteConfirm(record)}>
-                        <Tooltip title={"Delete"}><AiOutlineDelete /></Tooltip>
-                    </button>
-                </div>
-            ),
-        },
     ];
 
-    const rowClassName = (record, index) => {
-        return 'text-left';
-    };
+    useEffect(() => {
+        fetchWindDetails();
+    }, []);
 
     return (
         <div className='flex justify-center mt-10'>
@@ -92,14 +79,14 @@ const WindPlantDetails = () => {
                   theme={{
                       components: {
                           Table: {
-                              headerBg: '#3A4D39',
-                              headerColor: '#ffffff',
-                              rowHoverBg: '#739072',
+                            headerBg: '#3A4D39',
+                            headerColor: '#ffff',
+                            rowHoverBg: '#ECE3CE',
                           },
                       },
                   }}
               >
-                  <Table dataSource={filteredData} columns={columns} bordered={true} rowClassName={rowClassName} scroll={{ y: 550 }} rowKey="modename" />
+                  <Table dataSource={filteredData} columns={columns} bordered={true} scroll={{ y: 550 }} rowKey="plantid" />
               </ConfigProvider>
           </div>
         </div>

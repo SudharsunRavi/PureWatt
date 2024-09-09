@@ -9,12 +9,18 @@ import Navbar from './components/Navbar';
 
 import SolarPlantDetails from './Pages/SolarPlantDetails';
 import WindPlantDetails from './Pages/WindPlantDetails';
-import HydroPlantDetails from './Pages/HydroPlantDetails';
-import GeothermalPlantDetails from './Pages/GeothermalPlantDetails';
 
 import FinancialParam from './admin_components/FinancialParam';
 import EditFinancialParam from './admin_components/EditFinancialParam';
 import Proposal from './admin_components/Proposal';
+
+import AdminSpace from './admin_components/AdminSpace';
+import AdminDashboard from './Pages/AdminDashboard';
+
+import Solarplant from './admin_components/SolarPlant';
+import EditSolarplant from './admin_components/EditSolarplant';
+import Windplant from './admin_components/Windplant';
+import EditWindplant from './admin_components/EditWindplant';
 
 const AppLayout = () => {
   return (
@@ -53,14 +59,6 @@ const App = () => {
             element: <WindPlantDetails />
           },
           {
-            path: '/hydroplant-details',
-            element: <HydroPlantDetails />
-          },
-          {
-            path: '/geothermalplant-details',
-            element: <GeothermalPlantDetails />
-          },
-          {
             path: '/fundingreceived',
             element: <FinancialParam />
           },
@@ -79,6 +77,26 @@ const App = () => {
           {
             path: '/powerplant-edit/:id',
             element: <EditPowerplant />
+          },
+          {
+            path: '/admindashboard',
+            element: <AdminDashboard />
+          },
+          {
+            path: '/solarplant',
+            element: <Solarplant />
+          },
+          {
+            path: '/solarplant-edit/:id',
+            element: <EditSolarplant />
+          },
+          {
+            path: '/windplant',
+            element: <Windplant />
+          },
+          {
+            path: 'windplant-edit/:id',
+            element: <EditWindplant />
           }
       ]
     }

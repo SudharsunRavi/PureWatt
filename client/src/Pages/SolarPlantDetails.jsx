@@ -80,7 +80,20 @@ const SolarPlantDetails = () => {
               <div className=" mt-6 flex justify-between items-center mb-4">
                   <h1 className="text-3xl font-semibold">Solar Power Plant Details</h1>
               </div>
+
+              <ConfigProvider
+                    theme={{
+                        components: {
+                            Table: {
+                                headerBg: '#3A4D39',
+                                headerColor: '#ffff',
+                                rowHoverBg: '#ECE3CE',
+                            },
+                        },
+                    }}
+                >
                 <Table dataSource={filteredData} columns={columns} bordered={true} scroll={{ y: 550 }} rowKey="plantid" />
+                </ConfigProvider>
           </div>
         </div>
     );

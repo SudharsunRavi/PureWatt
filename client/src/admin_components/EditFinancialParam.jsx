@@ -122,10 +122,16 @@ const EditFinancialParam = () => {
     return (
         <div>
             <Toaster />
-            <h1 className="m-2 font-bold text-3xl py-4">Edit Finanical details</h1>
+            <div className="absolute inset-0 bg-black">
+            <img 
+              src={'https://firebasestorage.googleapis.com/v0/b/purewatt-62253.appspot.com/o/purewatt.png?alt=media&token=079def2f-5115-452d-aef2-035a58556eb3'}
+              className="h-screen w-screen object-cover opacity-40"
+              alt = "Background" />   
+            </div>
             <div>
-                <form onSubmit={handleSubmit} className="w-11/12 md:w-4/12 absolute p-12 bg-black bg-opacity-80 rounded-sm my-auto mx-auto right-0 left-0 text-white">
-                    <select id="plantid" onChange={handleChange} required autoComplete="off" className="p-4 m-2 w-full rounded-md bg-transparent border border-white text-black" value={formData.plantid}>
+                <form onSubmit={handleSubmit} className="w-11/12 md:w-4/12 absolute p-8 mt-3 bg-black bg-opacity-80 rounded-sm mx-auto right-0 left-0 text-white">
+                    <h1 className="m-2 font-bold text-3xl text-center py-4">Edit Finanical details</h1>
+                    <select id="plantid" onChange={handleChange} required autoComplete="off" className="p-4 m-2 w-full rounded-md bg-black border border-white text-white" value={formData.plantid}>
                         <option value="">Select Powerplant</option>
                         {powerplantDetails.map((powerplant) => {
                             return <option key={powerplant.powerplantid} value={powerplant.powerplantid}>{powerplant.name}</option>
@@ -138,7 +144,7 @@ const EditFinancialParam = () => {
                     <input type="number" placeholder="roi" id="roi" onChange={handleChange} required autoComplete="off" className="p-4 m-2 w-full rounded-md bg-transparent border border-white" value={formData.roi}/>
                     <input type="text" placeholder="revenuestreams" id="revenuestreams" onChange={handleChange} required autoComplete="off" className="p-4 m-2 w-full rounded-md bg-transparent border border-white" value={formData.revenuestreams}/>
 
-                    <button type="submit" className="p-4 mb-5 m-2 rounded-md bg-green-600 w-full">Update</button>
+                    <button type="submit" className="p-4 mb-5 m-2 rounded-md bg-dark_green w-full">Update</button>
                 </form>
             </div>
         </div>
