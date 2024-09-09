@@ -4,7 +4,7 @@ import { IoMdMenu, IoMdClose } from "react-icons/io";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { useState, useEffect, useRef } from 'react';
 // import AdminSpace from '../admin_components/AdminSpace';
-import { logout } from '../redux/userSlice';
+import { logout } from '../redux/userslice';
 import toast, { Toaster } from 'react-hot-toast';
 
 const Navbar = () => {
@@ -20,10 +20,6 @@ const Navbar = () => {
 
     const toggleAdminSpaceHandler = () => {
         setAdminSpaceOpen(!adminSpaceOpen);
-    };
-
-    const handleMenu = () => {
-        setMenuOpen(!menuOpen);
     };
 
     const handleDropdown = () => {
@@ -72,7 +68,7 @@ const Navbar = () => {
     }, []);
 
     return (
-        <header className="sticky top-0 z-50">
+        <header className="sticky top-0 z-50 bg-slate-500">
             <div className="flex flex-wrap items-center justify-between max-w-[90%] mx-auto">
                 <div className='flex gap-6'>
                     {currentUser && (currentUser.role === 'admin' || currentUser.role === 'superadmin') && <RxHamburgerMenu 
@@ -97,8 +93,7 @@ const Navbar = () => {
                         <div onClick={handleDropdown} className='flex gap-2 items-center cursor-pointer'>
                             {currentUser ? (
                                 <>
-                                    <span className='sm:inline mt-[1px] sm:text-lg font-semibold italic'>{currentUser?.username}</span>
-                                    <img src={currentUser?.profilephoto} alt="profile" className='w-11 h-11 rounded-full object-cover' />
+                                    <span className='sm:inline mt-[1px] sm:text-lg font-semibold italic'>{currentUser?.name}</span>
                                 </>
                             ) : (
                                 <Link to='/login' className='hover:underline sm:text-lg text-beige'>Login</Link>
