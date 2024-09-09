@@ -21,6 +21,7 @@ import Solarplant from './admin_components/SolarPlant';
 import EditSolarplant from './admin_components/EditSolarplant';
 import Windplant from './admin_components/Windplant';
 import EditWindplant from './admin_components/EditWindplant';
+import UserDashboard from './pages/UserDashboard';
 
 const AppLayout = () => {
   return (
@@ -97,6 +98,10 @@ const App = () => {
           {
             path: 'windplant-edit/:id',
             element: <EditWindplant />
+          },
+          {
+            path: '/userdashboard',
+            element: <UserDashboard />
           }
       ]
     }
