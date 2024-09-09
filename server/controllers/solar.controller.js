@@ -4,7 +4,7 @@ const create = async (req, res) => {
     const {plantid, solarirradiance, performanceratio, moduleefficiency, inverterefficiency, cuf, degradationrate, gridavailability, createdby, modifiedat} = req.body;
     try {
         const newSolar = await pool.query(
-            'INSERT INTO solar (plantid, solarirradiance, performanceratio, moduleefficiency, inverterefficiency, cuf, degradationrate, gridavailability, createdby, modifiedat) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING *',
+            'INSERT INTO solarpowerplant (plantid, solarirradiance, performanceratio, moduleefficiency, inverterefficiency, cuf, degradationrate, gridavailability, createdby, modifiedat) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING *',
             [plantid, solarirradiance, performanceratio, moduleefficiency, inverterefficiency, cuf, degradationrate, gridavailability, createdby, modifiedat]
         );
         pool.query('COMMIT');
@@ -20,7 +20,7 @@ const update = async (req, res) => {
     const {solarpowerplantid, plantid, solarirradiance, performanceratio, moduleefficiency, inverterefficiency, cuf, degradationrate, gridavailability, createdby, modifiedat} = req.body;
     try {
         const newSolar = await pool.query(
-            'UPDATE solar SET plantid = $2, solarirradiance = $3, performanceratio = $4, moduleefficiency = $5, inverterefficiency = $6, cuf = $7, degradationrate = $8, gridavailability = $9, createdby = $10, modifiedat = $11 WHERE solarpowerplantid = $1 RETURNING *',
+            'UPDATE solarpowerplant SET plantid = $2, solarirradiance = $3, performanceratio = $4, moduleefficiency = $5, inverterefficiency = $6, cuf = $7, degradationrate = $8, gridavailability = $9, createdby = $10, modifiedat = $11 WHERE solarpowerplantid = $1 RETURNING *',
             [solarpowerplantid, plantid, solarirradiance, performanceratio, moduleefficiency, inverterefficiency, cuf, degradationrate, gridavailability, createdby, modifiedat]
         );
         pool.query('COMMIT');
@@ -35,7 +35,7 @@ const update = async (req, res) => {
 const deleteSolar = async (req, res) => {
     const {solarpowerplantid} = req.body;
     try {
-        await pool.query('DELETE FROM solar WHERE solarpowerplantid = $1', [solarpowerplantid]);
+        await pool.query('DELETE FROM solarpowerplant WHERE solarpowerplantid = $1', [solarpowerplantid]);
         pool.query('COMMIT');
         return res.status(200).json({ status: 'true', message: 'Solar power plant deleted' });
     }
