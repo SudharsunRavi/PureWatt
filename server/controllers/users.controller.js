@@ -39,6 +39,111 @@ const login = async (req, res) => {
     }
 }
 
+// const updateUser = async (req, res) => {
+//     const { userid } = req.params;
+//     const { name, email, phonenumber, city, pincode, role, createdat, password } = req.body;
+
+//     try {
+//         await pool.query('BEGIN');
+//         const userCheck = await pool.query('SELECT * FROM users WHERE userid = $1', [userid]);
+
+//         if (userCheck.rows.length === 0) {
+//             await pool.query('ROLLBACK');
+//             return res.status(404).json({ status: 'error', message: 'User not found' });
+//         }
+
+//         let hashedPassword = null;
+//         if (password) {
+//             hashedPassword = await bcrypt.hash(password, 10);
+//         }
+
+//         let query = 'UPDATE users SET ';
+//         const params = [];
+
+//         // Username
+//         if (name !== undefined) {
+//             query += 'name = $1, ';
+//             params.push(name);
+//         } else {
+//             query += 'name = $1, ';
+//             params.push(userCheck.rows[0].name);
+//         }
+
+//         // Phone Number
+//         if (phonenumber !== undefined) {
+//             query += 'phonenumber = $2, ';
+//             params.push(phonenumber);
+//         } else {
+//             query += 'phonenumber = $2, ';
+//             params.push(userCheck.rows[0].phonenumber);
+//         }
+
+//         // City
+//         if (city !== undefined) {
+//             query += 'city = $3, ';
+//             params.push(city);
+//         } else {
+//             query += 'city = $3, ';
+//             params.push(userCheck.rows[0].city);
+//         }
+
+//         // Pincode
+//         if (pincode !== undefined) {
+//             query += 'pincode = $4, ';
+//             params.push(pincode);
+//         } else {
+//             query += 'pincode = $4, ';
+//             params.push(userCheck.rows[0].pincode);
+//         }
+
+//         // Email
+//         if (email !== undefined) {
+//             query += 'email = $5, ';
+//             params.push(email);
+//         } else {
+//             query += 'email = $5, ';
+//             params.push(userCheck.rows[0].email);
+//         }
+
+//         // Created At
+//         if (createdat !== undefined) {
+//             query += 'createdat = $6, ';
+//             params.push(createdat);
+//         } else {
+//             query += 'createdat = $6, ';
+//             params.push(userCheck.rows[0].createdat);
+//         }
+
+//         // Password
+//         if (hashedPassword) {
+//             query += 'password = $' + (params.length + 1) + ', ';
+//             params.push(hashedPassword);
+//         }
+
+//         if (role !== undefined) {
+//             query += 'role = $7, ';
+//             params.push(role);
+//         } else {
+//             query += 'role = $7, ';
+//             params.push(userCheck.rows[0].role);
+//         }
+
+//         query = query.slice(0, -2);
+//         query += ' WHERE userid = $' + (params.length + 1) + ' RETURNING *';
+//         params.push(userid);
+
+//         const result = await pool.query(query, params);
+//         await pool.query('COMMIT');
+
+//         const { password: _, ...userInfo } = result.rows[0];
+//         res.json({ status: 'true', userInfo });
+//     } catch (err) {
+//         await pool.query('ROLLBACK');
+//         res.status(500).json({ status: 'false', message: err.message });
+//         console.log(err);
+//     }
+// }
+
 const updateUser = async (req, res) => {
     const { userid } = req.params;
     const { name, email, phonenumber, city, pincode, role, createdat, password } = req.body;
@@ -60,77 +165,52 @@ const updateUser = async (req, res) => {
         let query = 'UPDATE users SET ';
         const params = [];
 
-        // Username
+        // Building dynamic query
+        let index = 1;
+
         if (name !== undefined) {
-            query += 'name = $1, ';
+            query += `name = $${index++}, `;
             params.push(name);
-        } else {
-            query += 'name = $1, ';
-            params.push(userCheck.rows[0].name);
         }
 
-        // Phone Number
         if (phonenumber !== undefined) {
-            query += 'phonenumber = $2, ';
+            query += `phonenumber = $${index++}, `;
             params.push(phonenumber);
-        } else {
-            query += 'phonenumber = $2, ';
-            params.push(userCheck.rows[0].phonenumber);
         }
 
-        // City
         if (city !== undefined) {
-            query += 'city = $3, ';
+            query += `city = $${index++}, `;
             params.push(city);
-        } else {
-            query += 'city = $3, ';
-            params.push(userCheck.rows[0].city);
         }
 
-        // Pincode
         if (pincode !== undefined) {
-            query += 'pincode = $4, ';
+            query += `pincode = $${index++}, `;
             params.push(pincode);
-        } else {
-            query += 'pincode = $4, ';
-            params.push(userCheck.rows[0].pincode);
         }
 
-        // Email
         if (email !== undefined) {
-            query += 'email = $5, ';
+            query += `email = $${index++}, `;
             params.push(email);
-        } else {
-            query += 'email = $5, ';
-            params.push(userCheck.rows[0].email);
         }
 
-        // Created At
         if (createdat !== undefined) {
-            query += 'createdat = $6, ';
+            query += `createdat = $${index++}, `;
             params.push(createdat);
-        } else {
-            query += 'createdat = $6, ';
-            params.push(userCheck.rows[0].createdat);
         }
 
-        // Password
         if (hashedPassword) {
-            query += 'password = $' + (params.length + 1) + ', ';
+            query += `password = $${index++}, `;
             params.push(hashedPassword);
         }
 
         if (role !== undefined) {
-            query += 'role = $7, ';
+            query += `role = $${index++}, `;
             params.push(role);
-        } else {
-            query += 'role = $7, ';
-            params.push(userCheck.rows[0].role);
         }
 
-        query = query.slice(0, -2);
-        query += ' WHERE userid = $' + (params.length + 1) + ' RETURNING *';
-        params.push(userid);
+        query = query.slice(0, -2); // Remove the trailing comma and space
+        query += ` WHERE userid = $${index} RETURNING *`; // Add the WHERE clause
+        params.push(userid); // Add the userid at the end
 
         const result = await pool.query(query, params);
         await pool.query('COMMIT');

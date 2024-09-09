@@ -29,6 +29,15 @@ const AdminSpace = () => {
                         </div>
                         <div className="flex flex-col gap-2 font-normal text-lg  mb-3">
                             <Link
+                                to="/admindashboard"
+                                className={`text-left ${isCurrentPath('/admindashboard') ? 'text-white bg-green' : 'text-white hover:bg-green hover:text-white'}`}
+                            >
+                                <button className='px-4' onClick={() => handleSelectChange('/admindashboard')}>
+                                    Admin Dashboard
+                                </button>
+                            </Link>
+
+                            <Link
                                 to="/proposal"
                                 className={`text-left ${isCurrentPath('/proposal') ? 'text-white bg-green' : 'text-white hover:bg-green hover:text-white'}`}
                             >
