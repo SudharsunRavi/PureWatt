@@ -71,7 +71,7 @@ const App = () => {
           {
             path: '/proposal',
             element: <Proposal />
-          }
+          },
           {
             path: '/powerplant-create',
             element: <Powerplant />
